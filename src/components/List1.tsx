@@ -14,7 +14,7 @@ const List1 = (props: List1Props) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setList({
-      ...list,
+      ...props.initalValues,
       [name]: value,
     });
   };

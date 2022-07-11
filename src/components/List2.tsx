@@ -2,13 +2,21 @@ import useNumberList from "./../hooks/useNumberList";
 
 type List2Props = {
   // TODO
-  initalValues: number[];
+  initalValues: any;
   label: string;
 };
 
 const List2 = (props: List2Props) => {
   const [list, setList, { pushend, popstart, clear, reset }]: any =
     useNumberList(props.initalValues);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setList({
+      ...props.initalValues,
+      [name]: value,
+    });
+  };
 
   return (
     <div data-testid="list2">
@@ -27,11 +35,7 @@ const List2 = (props: List2Props) => {
         );
       })}
 
-      <input
-        data-testid="list2-input"
-        type="number"
-        onChange={(e) => setList(e.target.value)}
-      />
+      <input data-testid="list2-input" type="number" onChange={handleChange} />
 
       <button onClick={pushend} data-testid="list2-btn-append-end">
         {/* Button to append new number to the end of the list */}PushEnd

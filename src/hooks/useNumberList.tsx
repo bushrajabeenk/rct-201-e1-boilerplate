@@ -6,7 +6,8 @@ const useNumberList = (initialArray: number[]) => {
   const [list, setList] = useState(initialArray);
 
   const pushstart = (param: number) => {
-    setList([param, ...list]);
+    list.unshift(param);
+    setList([...list]);
   };
 
   const popend = () => {
@@ -15,7 +16,8 @@ const useNumberList = (initialArray: number[]) => {
   };
 
   const pushend = (param: number) => {
-    setList([...list, param]);
+    list.push(param);
+    setList([...list]);
   };
 
   const popstart = () => {
@@ -28,10 +30,15 @@ const useNumberList = (initialArray: number[]) => {
   };
 
   const reset = () => {
+    setList([]);
     setList(initialArray);
   };
 
-  return [list, setList, { pushstart, pushend, popstart, popend, clear, reset }];
+  return [
+    list,
+    setList,
+    { pushstart, pushend, popstart, popend, clear, reset },
+  ];
 };
 
 export default useNumberList;
