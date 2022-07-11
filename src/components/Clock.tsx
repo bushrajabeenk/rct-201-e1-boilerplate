@@ -6,12 +6,10 @@ type Props = {
   hours: number;
   minutes: number;
   seconds: number;
-
 };
 
 const Clock = (props: Props) => {
-  const { hours, minutes, seconds }=useClock();
-
+  const { hours, minutes, seconds } = useClock();
 
   return (
     <div data-testid="clock">
