@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       {/* Clock */}
-      <Clock hours={0o0} minutes={0o0} seconds={0o0} />
+      <Clock label="24 hour Clock" hours={0o0} minutes={0o0} seconds={0o0} />
 
       {/* List 1  initialValues [1, 2, 3] */}
       {/* List 2  initialValues [4, 5] */}

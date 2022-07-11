@@ -16,8 +16,13 @@ const useNumberList = (initialArray: number[]) => {
   };
 
   const pushend = (param: number) => {
-    list.push(param);
-    setList([...list]);
+    let newlist = [];
+    list.map((elm, i) => {
+      newlist.push(elm);
+    });
+    newlist.push(param);
+    setList([...newlist]);
+    return list;
   };
 
   const popstart = () => {
@@ -30,8 +35,8 @@ const useNumberList = (initialArray: number[]) => {
   };
 
   const reset = () => {
-    setList([]);
-    setList(initialArray);
+    setList([...initialArray]);
+    // return list;
   };
 
   return [

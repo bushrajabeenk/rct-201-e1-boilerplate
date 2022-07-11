@@ -3,6 +3,7 @@ import useClock from "../hooks/useClock";
 
 type Props = {
   //  TODO
+  label: string;
   hours: number;
   minutes: number;
   seconds: number;
@@ -15,7 +16,7 @@ const Clock = (props: Props) => {
     <div data-testid="clock">
       <h4 data-testid="clock-label">
         {/* Label */}
-        24 hours Live Custom Component Clock
+        {props.label}
       </h4>
       <span data-testid="clock-hours">
         {/* Hours */}

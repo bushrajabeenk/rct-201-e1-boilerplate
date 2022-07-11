@@ -2,7 +2,7 @@ import useNumberList from "./../hooks/useNumberList";
 
 type List1Props = {
   // TODO
-  initalValues: any;
+  initalValues: number[];
   label: string;
 };
 
