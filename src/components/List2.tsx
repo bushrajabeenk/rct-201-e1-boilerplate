@@ -2,17 +2,20 @@ import useNumberList from "./../hooks/useNumberList";
 
 type List2Props = {
   // TODO
-  initalValues: number;
+  initalValues: number[];
   label: string;
 };
 
 const List2 = (props: List2Props) => {
   const [list, setList, { pushend, popstart, clear, reset }]: any =
-    useNumberList([4, 5]);
+    useNumberList(props.initalValues);
 
   return (
     <div data-testid="list2">
-      <h3 data-testid="list2-label">{/* Label */}</h3>
+      <h3 data-testid="list2-label">
+        {/* Label */}
+        {props.label}
+      </h3>
 
       {/* Iterate List and wrap the element div below inside */}
       {list.map((el: any, index: any) => {
@@ -29,15 +32,19 @@ const List2 = (props: List2Props) => {
         type="text"
         onChange={(e) => setList(e.target.value)}
       />
+
       <button onClick={pushend} data-testid="list2-btn-append-end">
         {/* Button to append new number to the end of the list */}PushEnd
       </button>
+
       <button onClick={popstart} data-testid="list2-btn-pop-start">
         {/* Button to  pop first element of the list */}PopStart
       </button>
+
       <button onClick={clear} data-testid="list2-btn-clear">
         {/* Button to  clear the list */}Clear
       </button>
+
       <button onClick={reset} data-testid="list2-btn-reset">
         {/* Button to  reset the list to initialValue */}Reset
       </button>
