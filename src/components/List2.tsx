@@ -29,7 +29,7 @@ const List2 = (props: List2Props) => {
 
       <input
         data-testid="list2-input"
-        type="text"
+        type="number"
         onChange={(e) => setList(e.target.value)}
       />
 

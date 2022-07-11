@@ -2,13 +2,14 @@ import useNumberList from "./../hooks/useNumberList";
 
 type List1Props = {
   // TODO
-  initalValues: number[];
+  initalValues: Array<number>;
   label: string;
 };
 
 const List1 = (props: List1Props) => {
   const [list, setList, { pushstart, popend, clear, reset }]: any =
     useNumberList(props.initalValues);
+    console.log(list)
 
   return (
     <div data-testid="list1">
@@ -16,8 +17,8 @@ const List1 = (props: List1Props) => {
         {/* Label */}
         {props.label}
       </h3>
-      {/* Iterate List and wrap the element div below inside */}
 
+      {/* Iterate List and wrap the element div below inside */}
       {list.map((el: any, index: any) => {
         return (
           <div key={index} data-testid="list1-element">
@@ -28,7 +29,7 @@ const List1 = (props: List1Props) => {
 
       <input
         data-testid="list1-input"
-        type="text"
+        type="number"
         onChange={(e) => setList(e.target.value)}
       />
 
