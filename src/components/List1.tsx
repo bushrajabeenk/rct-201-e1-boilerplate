@@ -2,14 +2,22 @@ import useNumberList from "./../hooks/useNumberList";
 
 type List1Props = {
   // TODO
-  initalValues: Array<number>;
+  initalValues: any;
   label: string;
 };
 
 const List1 = (props: List1Props) => {
   const [list, setList, { pushstart, popend, clear, reset }]: any =
     useNumberList(props.initalValues);
-    console.log(list)
+  console.log(list);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setList({
+      ...list,
+      [name]: value,
+    });
+  };
 
   return (
     <div data-testid="list1">
@@ -27,11 +35,7 @@ const List1 = (props: List1Props) => {
         );
       })}
 
-      <input
-        data-testid="list1-input"
-        type="number"
-        onChange={(e) => setList(e.target.value)}
-      />
+      <input data-testid="list1-input" type="number" onChange={handleChange} />
 
       <button onClick={() => pushstart()} data-testid="list1-btn-append-start">
         {/* Append to start of list btn */}PushStart
