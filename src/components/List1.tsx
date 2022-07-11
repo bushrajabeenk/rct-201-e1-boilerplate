@@ -1,29 +1,47 @@
-import React from "react";
+import useNumberList from "./../hooks/useNumberList";
 
 type List1Props = {
   // TODO
+  initalValues: number;
+  label: string;
 };
+
 const List1 = (props: List1Props) => {
+  const [list, setList, { pushstart, popend, clear, reset }]: any =
+    useNumberList([1, 2, 3, 4]);
+
   return (
     <div data-testid="list1">
-      <h3 data-testid="list1-label">{/* Label */}</h3>
+      <h3 data-testid="list1-label">
+        {/* Label */}
+        {props.label}
+      </h3>
       {/* Iterate List and wrap the element div below inside */}
-      <div data-testid="list1-element">{/* Each element in a list */}</div>
-      
 
-      
-      <input data-testid="list1-input" />
-      <button data-testid="list1-btn-append-start">
-        {/* Append to start of list btn */}
+      {list.map((el: any, index: any) => {
+        return (
+          <div key={index} data-testid="list1-element">
+            {/* Each element in a list */} {el}
+          </div>
+        );
+      })}
+
+      <input
+        data-testid="list1-input"
+        type="text"
+        onChange={(e) => setList(e.target.value)}
+      />
+      <button onClick={() => pushstart()} data-testid="list1-btn-append-start">
+        {/* Append to start of list btn */}PushStart
       </button>
-      <button data-testid="list1-btn-pop-end">
-        {/* po last element btn */}
+      <button onClick={() => popend()} data-testid="list1-btn-pop-end">
+        {/* po last element btn */}PopEnd
       </button>
-      <button data-testid="list1-btn-clear">
-        {/* clear list and set empty button */}
+      <button onClick={() => clear()} data-testid="list1-btn-clear">
+        {/* clear list and set empty button */}Clear
       </button>
-      <button data-testid="list1-btn-reset">
-        {/* Reset list to default value btn */}
+      <button onClick={() => reset()} data-testid="list1-btn-reset">
+        {/* Reset list to default value btn */}Reset
       </button>
     </div>
   );
